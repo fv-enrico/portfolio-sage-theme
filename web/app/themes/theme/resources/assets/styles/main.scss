@@ -1,21 +1,23 @@
-@tailwind preflight;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /** Import variables */
 @import "common/variables";
 
-@tailwind components;
+/** Import mixins */
+@import "common/mixins";
 
 /** Import theme styles */
+@import "common/colors";
 @import "common/global";
+@import "common/typography";
+
 @import "components/buttons";
-@import "components/comments";
+@import "components/container";
 @import "components/forms";
 @import "components/wp-classes";
-@import "layouts/header";
-@import "layouts/sidebar";
-@import "layouts/footer";
-@import "layouts/pages";
-@import "layouts/posts";
-@import "layouts/tinymce";
 
-@tailwind utilities;
+@import "modules/hero";
+
+@import "objects/primary";

@@ -1,0 +1,35 @@
+* {
+  @apply font-display;
+}
+
+h1 {
+  @apply text-28 #{!important};
+
+  @include breakpoint(md) {
+    @apply text-36 #{!important};
+  }
+}
+
+h2 {
+  @apply text-20 #{!important};
+
+  @include breakpoint(md) {
+    @apply text-28 #{!important};
+  }
+}
+
+h3 {
+  @apply text-16 #{!important};
+
+  @include breakpoint(md) {
+    @apply text-20 #{!important};
+  }
+}
+
+h4 {
+  @apply text-16 #{!important};
+}
+
+h5 {
+  @apply text-12 #{!important};
+}

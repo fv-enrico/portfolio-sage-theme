@@ -8,9 +8,16 @@ use Roots\Sage\Config;
 use Roots\Sage\Container;
 
 /**
- * Include timber
+ * Include timber files
  */
-include 'lib/timber.php';
+include 'lib/timber/directories.php';
+include 'lib/timber/error.php';
+include 'lib/timber/setup.php';
+
+/**
+ * Register menues
+ */
+include 'lib/wordpress/register-menus.php';
 
 /**
  * Helper function for prettying up errors

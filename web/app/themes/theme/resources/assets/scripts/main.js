@@ -1,24 +1,41 @@
 // import external dependencies
 import 'jquery';
 
-// Import everything from autoload
-import './autoload/**/*'
-
-// import local dependencies
-import Router from './util/Router';
-import common from './routes/common';
-import home from './routes/home';
-import aboutUs from './routes/about';
-
-/** Populate Router instance with DOM routes */
-const routes = new Router({
-  // All pages
-  common,
-  // Home page
-  home,
-  // About Us page, note the change from about-us to aboutUs.
-  aboutUs,
-});
-
 // Load Events
-jQuery(document).ready(() => routes.loadEvents());
+jQuery(document).ready(function() {
+  /*
+   * Replace all SVG images with inline SVG
+   */
+  jQuery('img').filter(function() {
+    return this.src.match(/.*\.svg$/);
+  }).each(function() {
+    var $img = jQuery(this);
+    var imgID = $img.attr('id');
+    var imgClass = $img.attr('class');
+    var imgURL = $img.attr('src');
+
+    jQuery.get(imgURL, function(data) {
+      // Get the SVG tag, ignore the rest
+      var $svg = jQuery(data).find('svg');
+
+      // Add replaced image's ID to the new SVG
+      if (typeof imgID !== 'undefined') {
+        $svg = $svg.attr('id', imgID);
+      }
+      // Add replaced image's classes to the new SVG
+      if (typeof imgClass !== 'undefined') {
+        $svg = $svg.attr('class', imgClass + ' replaced-svg');
+      }
+
+      // Remove any invalid XML tags as per http://validator.w3.org
+      $svg = $svg.removeAttr('xmlns:a');
+
+      // Replace image with new SVG
+      $img.replaceWith($svg);
+
+    }, 'xml');
+
+  });
+
+  console.log('Ready!');
+});

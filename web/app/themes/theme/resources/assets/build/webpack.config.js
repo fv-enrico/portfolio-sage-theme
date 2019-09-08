@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
@@ -37,14 +36,7 @@ let webpackConfig = {
     publicPath: false,
   },
   module: {
-    rules: [
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        include: config.paths.assets,
-        use: 'eslint',
-      },
-      {
+    rules: [{
         enforce: 'pre',
         test: /\.(js|s?[ca]ss)$/,
         include: config.paths.assets,
@@ -53,9 +45,15 @@ let webpackConfig = {
       {
         test: /\.js$/,
         exclude: [/node_modules(?![/|\\](bootstrap|foundation-sites))/],
-        use: [
-          { loader: 'cache' },
-          { loader: 'buble', options: { objectAssign: 'Object.assign' } },
+        use: [{
+            loader: 'cache'
+          },
+          {
+            loader: 'buble',
+            options: {
+              objectAssign: 'Object.assign'
+            }
+          },
         ],
       },
       {
@@ -63,12 +61,22 @@ let webpackConfig = {
         include: config.paths.assets,
         use: ExtractTextPlugin.extract({
           fallback: 'style',
-          use: [
-            { loader: 'cache' },
-            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+          use: [{
+              loader: 'cache'
+            },
             {
-              loader: 'postcss', options: {
-                config: { path: __dirname, ctx: config },
+              loader: 'css',
+              options: {
+                sourceMap: config.enabled.sourceMaps
+              }
+            },
+            {
+              loader: 'postcss',
+              options: {
+                config: {
+                  path: __dirname,
+                  ctx: config
+                },
                 sourceMap: config.enabled.sourceMaps,
               },
             },
@@ -80,18 +88,34 @@ let webpackConfig = {
         include: config.paths.assets,
         use: ExtractTextPlugin.extract({
           fallback: 'style',
-          use: [
-            { loader: 'cache' },
-            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+          use: [{
+              loader: 'cache'
+            },
             {
-              loader: 'postcss', options: {
-                config: { path: __dirname, ctx: config },
+              loader: 'css',
+              options: {
+                sourceMap: config.enabled.sourceMaps
+              }
+            },
+            {
+              loader: 'postcss',
+              options: {
+                config: {
+                  path: __dirname,
+                  ctx: config
+                },
                 sourceMap: config.enabled.sourceMaps,
               },
             },
-            { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
             {
-              loader: 'sass', options: {
+              loader: 'resolve-url',
+              options: {
+                sourceMap: config.enabled.sourceMaps
+              }
+            },
+            {
+              loader: 'sass',
+              options: {
                 sourceMap: config.enabled.sourceMaps,
                 sourceComments: true,
               },
@@ -162,30 +186,25 @@ let webpackConfig = {
     new webpack.LoaderOptionsPlugin({
       minimize: config.enabled.optimize,
       debug: config.enabled.watcher,
-      stats: { colors: true },
+      stats: {
+        colors: true
+      },
     }),
     new webpack.LoaderOptionsPlugin({
       test: /\.s?css$/,
       options: {
-        output: { path: config.paths.dist },
+        output: {
+          path: config.paths.dist
+        },
         context: config.paths.assets,
       },
-    }),
-    new webpack.LoaderOptionsPlugin({
-      test: /\.js$/,
-      options: {
-        eslint: { failOnWarning: false, failOnError: true },
-      },
-    }),
-    new StyleLintPlugin({
-      failOnError: !config.enabled.watcher,
-      syntax: 'scss',
     }),
     new FriendlyErrorsWebpackPlugin(),
   ],
 };
 
-/* eslint-disable global-require */ /** Let's only load dependencies as needed */
+/* eslint-disable global-require */
+/** Let's only load dependencies as needed */
 
 if (config.enabled.optimize) {
   webpackConfig = merge(webpackConfig, require('./webpack.config.optimize'));
