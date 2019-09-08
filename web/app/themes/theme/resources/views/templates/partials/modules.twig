@@ -1,0 +1,6 @@
+{% for module in modules if module.active %}
+  {% if module.anchor %}
+    <a class="page-section" name="{{ module.anchor }}"></a>
+  {% endif %}
+  {% include 'modules/'~module.acf_fc_layout~'.twig' with { 'module' : module } %}
+{% endfor %}

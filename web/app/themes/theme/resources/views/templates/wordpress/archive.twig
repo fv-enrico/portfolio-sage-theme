@@ -1,0 +1,14 @@
+{# This file demonstrates using most of the index.twig template and modifying
+   just a small part. See `search.twig` for an example of another approach #}
+
+{% extends "index.twig" %}
+
+{% block content %}
+
+  {% include 'partials/modules.twig' with {
+    'modules' : post.get_field('modules')
+  } %}
+
+  <h3>This is my archive</h3>
+  {{ parent() }}
+{% endblock %}
