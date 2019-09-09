@@ -1,0 +1,14 @@
+#eb-image-text {
+  .section {
+    &-background {
+      background-color: #0a2634;
+
+      h2 {
+        right: 39px;
+        font-size: 9.125em !important;
+        color: #0e405c;
+        transform-origin: right;
+      }
+    }
+  }
+}

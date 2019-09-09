@@ -1,5 +1,23 @@
 .container {
-  @include breakpoint(md) {
-    max-width: 812px !important;
+  @apply px-4;
+
+  @screen md {
+    max-width: 51.25em !important;
+  }
+
+  @screen xl {
+    @apply px-0;
+  }
+
+  &-fluid {
+    @apply px-4 mx-auto;
+
+    @screen md {
+      max-width: 102.5em !important;
+    }
+
+    @screen xl {
+      @apply px-0;
+    }
   }
 }

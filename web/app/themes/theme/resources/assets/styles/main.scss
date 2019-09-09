@@ -8,6 +8,9 @@
 /** Import mixins */
 @import "common/mixins";
 
+/** Import utilities */
+@import "utilities/rotate";
+
 /** Import theme styles */
 @import "common/colors";
 @import "common/global";
@@ -16,8 +19,12 @@
 @import "components/buttons";
 @import "components/container";
 @import "components/forms";
+@import "components/responsive-embeds";
+@import "components/sections";
 @import "components/wp-classes";
 
 @import "modules/hero";
+@import "modules/image-text";
+@import "modules/wysiwyg";
 
 @import "objects/primary";

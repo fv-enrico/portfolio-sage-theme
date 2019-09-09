@@ -15,9 +15,14 @@ include 'lib/timber/error.php';
 include 'lib/timber/setup.php';
 
 /**
- * Register menues
+ * Register menus
  */
 include 'lib/wordpress/register-menus.php';
+
+/**
+ * Register Custom Post types
+ */
+include 'lib/wordpress/cpt/project.php';
 
 /**
  * Helper function for prettying up errors

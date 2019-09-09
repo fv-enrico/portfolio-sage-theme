@@ -12,9 +12,11 @@ module.exports = {
       },
     },
     screens: {
-      'sm': '440px',
-      'md': '821px',
-      'lg': '1640px',
+      'sm': '48em', // 768px
+      'md': '64em', // 1024px
+      'lg': '85.375em', // 1366px
+      'xl': '120em', // 1920px
+      'xxl': '160em', // 2560px
     },
     // Center .container by default
     container: {
@@ -26,11 +28,11 @@ module.exports = {
     },
     // Add custom font-size variations
     fontSize: {
-      '36': '36px',
-      '28': '28px',
-      '20': '20px',
-      '16': '16px',
-      '12': '12px',
+      '36': '2.25em',
+      '28': '1.75em',
+      '20': '1.25em',
+      '16': '1em',
+      '12': '0.75em',
     },
   },
   variants: {},

@@ -1,0 +1,9 @@
+section {
+  position: relative;
+}
+
+.section {
+  &-background {
+    @apply absolute inset-x-0 inset-y-0 -z-10;
+  }
+}

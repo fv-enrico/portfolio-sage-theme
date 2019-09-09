@@ -5,7 +5,7 @@
 h1 {
   @apply text-28 #{!important};
 
-  @include breakpoint(md) {
+  @screen md {
     @apply text-36 #{!important};
   }
 }
@@ -13,7 +13,7 @@ h1 {
 h2 {
   @apply text-20 #{!important};
 
-  @include breakpoint(md) {
+  @screen md {
     @apply text-28 #{!important};
   }
 }
@@ -21,7 +21,7 @@ h2 {
 h3 {
   @apply text-16 #{!important};
 
-  @include breakpoint(md) {
+  @screen md {
     @apply text-20 #{!important};
   }
 }
