@@ -1,0 +1,20 @@
+footer {
+  position: relative;
+
+  .section {
+    &-content {
+      &.container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+
+        > div {
+          border-top: 2px solid #fff;
+        }
+      }
+    }
+
+    &-background {
+      background-color: $blue-dark;
+    }
+  }
+}

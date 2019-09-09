@@ -1,0 +1,26 @@
+<section id="eb-form">
+  <div class="section-content container py-20">
+    <small class="block text-16 text-gray-700 mb-6">Contact</small>
+    <div class="flex flex-col md:flex-row">
+
+      <div class="w-full md:w-9/12 md:pr-12 pb-6 md:pb-0">
+        <h2 class="text-white mb-2">Leave a message</h2>
+        {{ function('do_shortcode', '[wpforms id="'~module.form~'"]') }}
+      </div>
+
+      <div class="w-full md:w-3/12">
+        <h2 class="text-white mb-5">Social Media</h2>
+        <div class="w-full flex">
+          <a href="#" class="inline-block mr-16">
+            <img src="{{ site.theme.link }}/images/github_mark.svg" alt="">
+          </a>
+          <a href="#" class="inline-block">
+            <img src="{{ site.theme.link }}/images/xing_mark.svg" alt="">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="section-background bg-blue-dark"></div>
+</section>

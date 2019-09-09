@@ -1,0 +1,101 @@
+#eb-form {
+  .section {
+    &-content {
+      form {
+        input[type="text"],
+        input[type="email"],
+        textarea {
+          @apply bg-transparent;
+          border: 2px solid rgba(255, 255, 255, 0.4);
+          color: rgba(255, 255, 255, 0.4);
+          font-size: 1em;
+          line-height: 1;
+          padding-left: 1.5em;
+
+          &:focus {
+            border-color: rgba(255, 255, 255, 1);
+            color: rgba(255, 255, 255, 1);
+          }
+
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+          }
+        }
+
+        input[type="text"],
+        input[type="email"] {
+          @apply rounded-full;
+          height: 55px;
+        }
+
+        textarea {
+          border-radius: 44px;
+          padding-top: 1.5em;
+        }
+
+        .wpforms-field-gdpr-checkbox {
+          @apply text-white;
+
+          li {
+            display: flex;
+            align-items: center;
+
+            input[type="checkbox"] {
+              height: 1.525em;
+              width: 1.525em;
+              margin-right: 1.65em;
+
+              + label {
+                position: relative;
+
+                &::before {
+                  @apply rounded-full bg-black;
+                  content: "";
+                  position: absolute;
+                  height: 1.525em;
+                  width: 1.525em;
+                  left: -2.525em;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  border: 2px solid rgba(255, 255, 255, 0.4);
+                }
+
+                &::after {
+                  @apply rounded-full;
+                  position: absolute;
+                  height: 0.75em;
+                  width: 0.75em;
+                  left: -2.15em;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  background-color: rgba(255, 255, 255, 1);
+                }
+              }
+
+              &:checked + label {
+                &::before {
+                  border-color: rgba(255, 255, 255, 1);
+                }
+
+                &::after {
+                  content: "";
+                }
+              }
+            }
+          }
+        }
+
+        button[type="submit"] {
+          @apply bg-white rounded-full px-24 py-4;
+          border: 2px solid #fff;
+
+          @include hover {
+            @apply text-white;
+            background-color: #009cf0;
+            border-color: #009cf0;
+          }
+        }
+      }
+    }
+  }
+}

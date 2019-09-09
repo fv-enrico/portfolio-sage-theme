@@ -1,0 +1,10 @@
+@mixin hover {
+  transition: $global-transition;
+
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+    transition: $global-transition;
+  }
+}

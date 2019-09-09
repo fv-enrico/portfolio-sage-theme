@@ -6,7 +6,9 @@
     'modules' : post.get_field('modules')
   } %}
 
-  <div class="container">
-    {{ post.content }}
-  </div>
+  {% if post.content %}
+    <div class="container">
+      {{ post.content }}
+    </div>
+  {% endif %}
 {% endblock %}

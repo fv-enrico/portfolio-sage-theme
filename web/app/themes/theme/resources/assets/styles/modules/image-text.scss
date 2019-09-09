@@ -1,5 +1,27 @@
 #eb-image-text {
   .section {
+    &-content {
+      a.button {
+        border: 2px solid #fff;
+
+        @include hover {
+          @apply text-white;
+          background-color: #009cf0;
+          border-color: #009cf0;
+        }
+      }
+
+      a.icon {
+        @include hover {
+          svg {
+            path {
+              fill: #009cf0;
+            }
+          }
+        }
+      }
+    }
+
     &-background {
       background-color: #0a2634;
 
