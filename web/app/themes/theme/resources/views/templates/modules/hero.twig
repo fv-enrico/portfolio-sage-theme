@@ -9,7 +9,7 @@
     <h1 class="text-white mb-6">{{ module.headline }}</h1>
     <div class="w-full flex">
       {% for item in module.icons %}
-        <a href="{{ item.link.url }}" class="inline-block{% if loop.index is odd %} mr-16{% endif %}" title="{{ item.link.title }}" target="{{ item.link.target }}">
+        <a href="{{ item.link.url }}" class="icon inline-block{% if loop.index is odd %} mr-16{% endif %}" title="{{ item.link.title }}" target="{{ item.link.target }}">
           {% set image = TimberImage(item.icon) %}
           <img src="{{ image.src }}" alt="{{ image.alt }}">
         </a>

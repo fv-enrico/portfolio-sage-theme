@@ -40,7 +40,9 @@
       </article>
     {% endfor %}
 
-    <a href="{{ module.button.url }}" target="{{ module.button.target }}" title="{{ module.button.title }}" class="button inline-block rounded-full bg-white uppercase w-full text-center md:w-auto md:px-24 py-3">{{ module.button.title }}</a>
+    {% if module.button.title %}
+      <a href="{{ module.button.url }}" target="{{ module.button.target }}" title="{{ module.button.title }}" class="button inline-block rounded-full bg-white uppercase w-full text-center md:w-auto md:px-24 py-3">{{ module.button.title }}</a>
+    {% endif %}
   </div>
   <div class="section-background">
     <div class="container-fluid h-full w-full relative">

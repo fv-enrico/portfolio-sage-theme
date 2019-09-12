@@ -17,7 +17,7 @@
         <h2 class="text-white mb-5">{{ module.socialMediaGroup.headline }}</h2>
         <div class="w-full flex">
           {% for item in module.socialMediaGroup.icons %}
-            <a href="{{ item.link.url }}" class="inline-block{% if loop.index is odd %} mr-16{% endif %}" title="{{ item.link.title }}" target="{{ item.link.target }}">
+            <a href="{{ item.link.url }}" class="icon inline-block{% if loop.index is odd %} mr-16{% endif %}" title="{{ item.link.title }}" target="{{ item.link.target }}">
               {% set icon = TimberImage(item.icon) %}
               <img src="{{ icon.src }}" alt="{{ icon.alt }}">
             </a>

@@ -28,4 +28,8 @@ nav {
   &.opened {
     @apply bg-black;
   }
+
+  svg {
+    height: 1.75em;
+  }
 }

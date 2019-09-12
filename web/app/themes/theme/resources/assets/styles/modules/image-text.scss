@@ -10,16 +10,6 @@
           border-color: #009cf0;
         }
       }
-
-      a.icon {
-        @include hover {
-          svg {
-            path {
-              fill: #009cf0;
-            }
-          }
-        }
-      }
     }
 
     &-background {

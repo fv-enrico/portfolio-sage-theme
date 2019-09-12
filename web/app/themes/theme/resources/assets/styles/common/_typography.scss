@@ -33,3 +33,25 @@ h4 {
 h5 {
   @apply text-12 #{!important};
 }
+
+a {
+  @include hover {
+    color: #009cf0;
+  }
+
+  &.icon {
+    @include hover {
+      svg {
+        path {
+          fill: #009cf0;
+          transition: $global-transition;
+        }
+      }
+    }
+    svg {
+      path {
+        transition: $global-transition;
+      }
+    }
+  }
+}
