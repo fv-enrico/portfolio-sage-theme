@@ -15,14 +15,15 @@ include 'lib/timber/error.php';
 include 'lib/timber/setup.php';
 
 /**
- * Register menus
+ * Wordpress lib files
  */
 include 'lib/wordpress/register-menus.php';
+include 'lib/wordpress/cpt/project.php';
 
 /**
- * Register Custom Post types
+ * ACF lib files
  */
-include 'lib/wordpress/cpt/project.php';
+include 'lib/acf/add-options-page.php';
 
 /**
  * Helper function for prettying up errors

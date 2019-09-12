@@ -5,3 +5,58 @@
     }
   }
 }
+
+#tinymce {
+  padding: 1em;
+}
+
+.editor-content,
+#tinymce {
+  h2 {
+    margin-bottom: 0.25em;
+    color: #566875;
+  }
+
+  h3 {
+    margin-bottom: 0.25em;
+    color: #566875;
+  }
+
+  p {
+    margin-bottom: 1.25em;
+  }
+
+  ul {
+    padding-left: 1.25em;
+    margin-bottom: 1em;
+
+    li {
+      position: relative;
+      list-style: disc;
+      margin-bottom: 0.1em;
+      cursor: default;
+
+      @screen sm {
+        &::before {
+          position: absolute;
+          width: 300%;
+          height: 100%;
+          background-color: rgba(#009cf0, 0.25);
+          z-index: -1;
+          top: -2px;
+          left: -3em;
+        }
+
+        @include hover {
+          &::before {
+            content: "";
+          }
+        }
+      }
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+}

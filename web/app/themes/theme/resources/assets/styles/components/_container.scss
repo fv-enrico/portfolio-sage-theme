@@ -1,5 +1,10 @@
 .container {
-  @apply px-4;
+  padding-left: 2.75em;
+  padding-right: 1em;
+
+  @screen sm {
+    @apply px-4;
+  }
 
   @screen md {
     max-width: 51.25em !important;

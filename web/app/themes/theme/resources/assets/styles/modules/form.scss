@@ -30,6 +30,7 @@
 
         textarea {
           border-radius: 44px;
+          border-bottom-right-radius: 0;
           padding-top: 1.5em;
         }
 
@@ -41,23 +42,31 @@
             align-items: center;
 
             input[type="checkbox"] {
-              height: 1.525em;
-              width: 1.525em;
+              height: 1.5em;
+              width: 1.5em;
               margin-right: 1.65em;
+              margin-top: 0;
+              opacity: 0;
+              cursor: pointer;
 
               + label {
                 position: relative;
+                cursor: pointer;
 
                 &::before {
                   @apply rounded-full bg-black;
                   content: "";
                   position: absolute;
-                  height: 1.525em;
-                  width: 1.525em;
-                  left: -2.525em;
+                  height: 1.5em;
+                  width: 1.5em;
+                  left: -2.6rem;
                   top: 50%;
                   transform: translateY(-50%);
                   border: 2px solid rgba(255, 255, 255, 0.4);
+
+                  @screen sm {
+                    left: -2.8rem;
+                  }
                 }
 
                 &::after {
@@ -65,10 +74,14 @@
                   position: absolute;
                   height: 0.75em;
                   width: 0.75em;
-                  left: -2.15em;
+                  left: -2.25rem;
                   top: 50%;
                   transform: translateY(-50%);
                   background-color: rgba(255, 255, 255, 1);
+
+                  @screen sm {
+                    left: -2.4rem;
+                  }
                 }
               }
 
@@ -97,5 +110,19 @@
         }
       }
     }
+  }
+}
+
+.wpforms-container .wpforms-field {
+  overflow-x: unset !important;
+}
+
+.wpforms-field-row-block,
+.wpforms-field {
+  outline: none !important;
+
+  input,
+  textarea {
+    outline: none !important;
   }
 }

@@ -1,18 +1,19 @@
 <footer id="eb-footer">
   <div class="section-content container-fluid">
     <div class="mx-4 flex justify-between py-8">
-      <small class="text-white">&copy;
+      <p class="text-white text-12">&copy;
         {{"now"|date('Y')}}
-        Enrico Beyer</small>
+        {{ options.copyright }}</p>
 
       <ul class="flex">
-        <li>
-          <a href="#" class="text-white text-12">Legal Notice</a>
-        </li>
-        <span class="text-white mx-2">|</span>
-        <li>
-          <a href="#" class="text-white text-12">Privacy</a>
-        </li>
+        {% for item in footer.get_items %}
+          <li class="{{ item.classes | join(' ') }} text-white text-12">
+            <a href="{{ item.link }}" title="{{ item.title }}">{{ item.title }}</a>
+          </li>
+          {% if loop.index is odd %}
+            <span class="text-white mx-2">|</span>
+          {% endif %}
+        {% endfor %}
       </ul>
     </div>
   </div>

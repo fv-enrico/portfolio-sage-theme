@@ -1,14 +1,22 @@
-<nav id="eb-primary-navigation" class="absolute inset-x-0 z-20">
-  <div class="container-fluid flex justify-between py-8">
-    <a href="#">
-      <img src="/app/themes/theme/dist/images/logo.svg" alt="">
+<nav id="eb-primary-navigation" class="fixed inset-x-0 z-20 stuck">
+  <div class="container-fluid flex flex-col sm:flex-row sm:justify-between pt-8 pb-4">
+    <a href="/" title="Enrico Beyer | Frontend Developer">
+      {% set logo = TimberImage(options.logo) %}
+      <img src="{{ logo.src }}" alt="Enrico Beyer | Frontend Developer">
     </a>
-    <ul class="flex">
+    <ul class="hidden sm:flex">
       {% for item in primary.get_items %}
-        <li class="{{ item.classes | join(' ') }} text-white ml-8">
+        <li class="{{ item.classes | join(' ') }} text-white sm:ml-8 mt-4 mb-4 sm:mt-0 sm:mb-0">
           <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
         </li>
       {% endfor %}
     </ul>
+    <button type="button" name="button" class="nav-toggle absolute w-8 sm:hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 72.26 72.26">
+        <title>Menu Toggle</title>
+        <path class="open" fill="#fff" d="M0,5.14A5.15,5.15,0,0,1,5.14,0h62a5.14,5.14,0,0,1,0,10.28h-62A5.16,5.16,0,0,1,0,5.14ZM67.12,31h-62a5.14,5.14,0,0,0,0,10.28h62a5.14,5.14,0,0,0,0-10.28Zm0,31h-62a5.14,5.14,0,1,0,0,10.28h62a5.14,5.14,0,0,0,0-10.28Z"/>
+        <path class="close hidden" fill="#fff" d="M70.76,63.49a5.14,5.14,0,0,1-7.27,7.27L36.13,43.39,8.77,70.76A5.14,5.14,0,0,1,1.5,63.49L28.86,36.13,1.5,8.77A5.14,5.14,0,0,1,8.77,1.5L36.13,28.86,63.49,1.5a5.14,5.14,0,0,1,7.27,7.27L43.39,36.13Z"/>
+      </svg>
+    </button>
   </div>
 </nav>

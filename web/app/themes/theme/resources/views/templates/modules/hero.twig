@@ -1,25 +1,28 @@
 <section id="eb-hero" class="h-screen relative flex items-center">
   <div class="section-content container">
-    <small class="block text-16 text-gray-700 mb-6">Start</small>
-    <h1 class="text-white mb-6">
-      Hi, my name is
-      <span class="font-bold">Enrico Beyer</span>,<br/>
-      I am a
-      <span class="font-bold">Frontend Developer</span>.<br/>
-      Currently working for<br/>
-      Friendventure, Cologne
-    </h1>
+    {% if module.timeline %}
+      <div class="timeline{% if module.timelineLast %} last{% endif %}"></div>
+    {% endif %}
+    {% if module.title %}
+      <small class="block text-16 text-gray-700 mb-6">{{ module.title }}</small>
+    {% endif %}
+    <h1 class="text-white mb-6">{{ module.headline }}</h1>
     <div class="w-full flex">
-      <a href="#" class="inline-block mr-16">
-        <img src="{{ site.theme.link }}/images/github_mark.svg" alt="">
-      </a>
-      <a href="#" class="inline-block">
-        <img src="{{ site.theme.link }}/images/xing_mark.svg" alt="">
-      </a>
+      {% for item in module.icons %}
+        <a href="{{ item.link.url }}" class="inline-block{% if loop.index is odd %} mr-16{% endif %}" title="{{ item.link.title }}" target="{{ item.link.target }}">
+          {% set image = TimberImage(item.icon) %}
+          <img src="{{ image.src }}" alt="{{ image.alt }}">
+        </a>
+      {% endfor %}
     </div>
   </div>
   <div class="section-background">
     <div class="absolute h-full w-full bg-blue-transparent z-10"></div>
-    <img src="{{ site.theme.link }}/images/bg_hero.jpg" class="absolute h-full w-full object-cover bg-fixed" alt="">
+    {% set imageSmall = TimberImage(module.imageSmall) %}
+    <img src="{{ imageSmall.src|resize(640) }}" class="absolute h-full w-full object-cover bg-fixed block sm:hidden" alt="{{ imageSmall.alt }}">
+    {% set imageMedium = TimberImage(module.imageMedium) %}
+    <img src="{{ imageMedium.src|resize(1280) }}" class="absolute h-full w-full object-cover bg-fixed hidden sm:block lg:hidden" alt="{{ imageMedium.alt }}">
+    {% set imageLarge = TimberImage(module.imageLarge) %}
+    <img src="{{ imageLarge.src|resize(2560) }}" class="absolute h-full w-full object-cover bg-fixed hidden lg:block" alt="{{ imageLarge.alt }}">
   </div>
 </section>

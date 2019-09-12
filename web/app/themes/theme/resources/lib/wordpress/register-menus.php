@@ -7,7 +7,8 @@ add_action(
     'init', function () {
         register_nav_menus(
             array(
-            'primary' =>  'Haupt-Navigation'
+            'primary' =>  'Haupt-Navigation',
+						'footer' =>   'Footer-Navigation'
             )
         );
     }

@@ -1,72 +1,50 @@
 <section id="eb-image-text">
   <div class="section-content container py-20">
-    <small class="block text-16 text-gray-700 mb-6">Work</small>
+    {% if module.timeline %}
+      <div class="timeline{% if module.timelineLast %} last{% endif %}"></div>
+    {% endif %}
+    {% if module.title %}
+      <small class="block text-16 text-gray-700 mb-6">{{ module.title }}</small>
+    {% endif %}
 
-    <article class="flex flex-col md:flex-row mb-20">
-      <div class="w-full md:w-1/2 relative mb-6 md:mb-0 md:pr-2">
-        <div class="widescreen">
-          <img src="https://dummyimage.com/600x400/0d5373/fff" alt="PLACEHOLDER" class="absolute h-full w-full object-cover">
-        </div>
-      </div>
-      <div class="w-full md:w-1/2 flex flex-col justify-center md:pl-2">
-        <h3 class="uppercase text-white mb-4">Project A</h3>
-        <p class="text-white mb-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-        <div class="w-full flex">
-          <a href="#" class="icon inline-block mr-4" title="View Sourcecode">
-            <img src="{{ site.theme.link }}/images/github_mark.svg">
-          </a>
-          <a href="#" class="icon inline-block" title="Visit Website">
-            <img src="{{ site.theme.link }}/images/live_mark.svg">
-          </a>
-        </div>
-      </div>
-    </article>
+    {% for item in module.imageTextBlocks %}
+      <article class="flex flex-col mb-20{% if loop.index is odd %} md:flex-row{% else %} md:flex-row-reverse{% endif %}">
+        <div class="w-full md:w-1/2 relative mb-6 md:mb-0{% if loop.index is odd %} md:pr-2{% else %} md:pl-2{% endif %}">
+          <div class="widescreen">
 
-    <article class="flex flex-col md:flex-row-reverse mb-20">
-      <div class="w-full md:w-1/2 relative mb-6 md:mb-0 md:pl-2">
-        <div class="widescreen">
-          <img src="https://dummyimage.com/600x400/0d5373/fff" alt="PLACEHOLDER" class="absolute h-full w-full object-cover">
-        </div>
-      </div>
-      <div class="w-full md:w-1/2 flex flex-col justify-center md:pr-2">
-        <h3 class="uppercase text-white mb-4">Project A</h3>
-        <p class="text-white mb-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-        <div class="w-full flex">
-          <a href="#" class="icon inline-block mr-4" title="View Sourcecode">
-            <img src="{{ site.theme.link }}/images/github_mark.svg">
-          </a>
-          <a href="#" class="icon inline-block" title="Visit Website">
-            <img src="{{ site.theme.link }}/images/live_mark.svg">
-          </a>
-        </div>
-      </div>
-    </article>
+            {% for post in item %}
+              {% set image = TimberImage(post.thumbnail) %}
+              <img src="{{ image.src }}" alt="{{ image.alt }}" class="absolute h-full w-full object-cover">
+            {% endfor %}
 
-    <article class="flex flex-col md:flex-row mb-20">
-      <div class="w-full md:w-1/2 relative mb-6 md:mb-0 md:pr-2">
-        <div class="widescreen">
-          <img src="https://dummyimage.com/600x400/0d5373/fff" alt="PLACEHOLDER" class="absolute h-full w-full object-cover">
+          </div>
         </div>
-      </div>
-      <div class="w-full md:w-1/2 flex flex-col justify-center md:pl-2">
-        <h3 class="uppercase text-white mb-4">Project A</h3>
-        <p class="text-white mb-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-        <div class="w-full flex">
-          <a href="#" class="icon inline-block mr-4" title="View Sourcecode">
-            <img src="{{ site.theme.link }}/images/github_mark.svg">
-          </a>
-          <a href="#" class="icon inline-block" title="Visit Website">
-            <img src="{{ site.theme.link }}/images/live_mark.svg">
-          </a>
-        </div>
-      </div>
-    </article>
+        <div class="w-full md:w-1/2 flex flex-col justify-center md:pl-2">
 
-    <a href="#" class="button inline-block rounded-full bg-white uppercase px-24 py-3">View More</a>
+          {% for post in item %}
+            <h3 class="uppercase text-white mb-4">{{ post.title }}</h3>
+            <p class="text-white mb-4">{{ post.preview.length(30).read_more(null) }}</p>
+          {% endfor %}
+
+          <div class="w-full flex">
+
+            {% for element in item.icons %}
+              <a href="{{ element.link }}" class="icon inline-block{% if loop.index is odd %} mr-16{% endif %}" title="{{ element.link.title }}" target="{{ element.link.target }}">
+                {% set icon = TimberImage(element.icon) %}
+                <img src="{{ icon.src }}" alt="{{ icon.alt }}">
+              </a>
+            {% endfor %}
+
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+
+    <a href="{{ module.button.url }}" target="{{ module.button.target }}" title="{{ module.button.title }}" class="button inline-block rounded-full bg-white uppercase w-full text-center md:w-auto md:px-24 py-3">{{ module.button.title }}</a>
   </div>
   <div class="section-background">
-    <div class="container-fluid h-full w-full relative overflow-hidden">
-      <h2 class="absolute rotate-270 uppercase font-bold">Projects</h2>
+    <div class="container-fluid h-full w-full relative">
+      <h2 class="absolute rotate-270 uppercase font-bold">{{ module.pseudoText }}</h2>
     </div>
   </div>
 </section>

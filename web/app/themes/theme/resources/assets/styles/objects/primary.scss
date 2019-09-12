@@ -1,4 +1,31 @@
 #eb-primary-navigation {
   @apply mx-auto;
-  max-width: 1640px;
+
+  .nav-toggle {
+    top: 1.8em;
+    right: 1em;
+
+    @include hover {
+      outline: none;
+    }
+  }
+}
+
+nav {
+  transition: $global-transition;
+  transform: translateY(0);
+
+  &.nav-up {
+    transition: $global-transition;
+    transform: translateY(-82px);
+  }
+
+  &.stuck {
+    transition: $global-transition;
+    transform: translateY(0) !important;
+  }
+
+  &.opened {
+    @apply bg-black;
+  }
 }
