@@ -23,13 +23,15 @@
 
           {% for post in item %}
             <h3 class="uppercase text-white mb-4">{{ post.title }}</h3>
-            <p class="text-white mb-4">{{ post.preview.length(30).read_more(null) }}</p>
+            {% if post.preview %}
+              <p class="text-white mb-4">{{ post.preview.length(30).read_more(null) }}</p>
+            {% endif %}
           {% endfor %}
 
           <div class="w-full flex">
 
             {% for element in item.icons %}
-              <a href="{{ element.link }}" class="icon inline-block{% if loop.index is odd %} mr-16{% endif %}" title="{{ element.link.title }}" target="{{ element.link.target }}">
+              <a href="{{ element.link.url }}" class="icon inline-block{% if loop.index is odd %} mr-16{% endif %}" title="{{ element.link.title }}" target="{{ element.link.target }}">
                 {% set icon = TimberImage(element.icon) %}
                 <img src="{{ icon.src }}" alt="{{ icon.alt }}">
               </a>

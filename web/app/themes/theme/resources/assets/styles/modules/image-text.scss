@@ -10,6 +10,12 @@
           border-color: #009cf0;
         }
       }
+
+      .widescreen {
+        img {
+          object-position: top;
+        }
+      }
     }
 
     &-background {

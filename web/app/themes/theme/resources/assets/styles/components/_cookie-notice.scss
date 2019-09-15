@@ -1,0 +1,59 @@
+#cookie-notice {
+  @apply py-4;
+
+  .cookie-notice-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 60em;
+    max-width: 100%;
+    margin: 0 auto;
+
+    #cn-notice-text {
+      width: 100%;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid #fff;
+    }
+
+    a {
+      display: block;
+      margin-top: 1em;
+      padding-top: 0.5em;
+    }
+
+    #cn-accept-cookie {
+      background-color: #009cf0;
+      background-image: none;
+      text-shadow: none;
+
+      @include hover {
+        background-color: #ffffff;
+        color: #000000;
+      }
+    }
+
+    #cn-refuse-cookie {
+      background-color: #940013;
+      background-image: none;
+      text-shadow: none;
+
+      @include hover {
+        background-color: #ffffff;
+        color: #000000;
+      }
+    }
+  }
+}
+
+.cn-revoke-cookie {
+  @apply py-2 mb-4;
+  display: inline-block;
+  background-color: #940013;
+  background-image: none;
+  text-shadow: none;
+
+  @include hover {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}

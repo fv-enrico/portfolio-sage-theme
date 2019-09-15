@@ -1,6 +1,8 @@
 #eb-hero {
   .section {
     &-content {
+      transform: translateX(-20%);
+
       h1 {
         strong {
           color: #009cf0;
